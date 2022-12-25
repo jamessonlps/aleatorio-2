@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import {
   Modal,
-  TouchableWithoutFeedback,
   Keyboard,
   Alert
 } from "react-native";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 import { CategorySelect } from "../CategorySelect";
-import { Input } from "../../Forms/Input";
-import { InputForm } from "../../Forms/InputForm";
-import { Button } from "../../Forms/Button";
-import { TransactionTypeButton } from "../../Forms/TransactionTypeButton";
-import { CategorySelectButton } from "../../Forms/CategorySelectButton";
+import { InputForm } from "../../components/Forms/InputForm";
+import { Button } from "../../components/Forms/Button";
+import { TransactionTypeButton } from "../../components/Forms/TransactionTypeButton";
+import { CategorySelectButton } from "../../components/Forms/CategorySelectButton";
 
 import {
   Container,
@@ -28,7 +27,6 @@ import {
 
 interface FormData {
   [name: string]: string;
-  // amount: string;
 }
 
 
@@ -94,6 +92,8 @@ export function Register() {
   return (
     <TouchableWithoutFeedback
       onPress={Keyboard.dismiss}
+      style={{ flex: 1 }}
+      containerStyle={{ flex: 1 }}
     >
       <Container>
         <Header>
