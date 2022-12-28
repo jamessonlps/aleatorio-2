@@ -26,13 +26,12 @@ import {
   Fields,
   TransactionTypes,
 } from "./styles";
+import { useAuth } from "../../contexts/AuthContext";
 
 
 interface FormData {
   [name: string]: string;
 }
-
-interface NavigationProps { }
 
 
 const schema = Yup.object().shape({
@@ -48,6 +47,7 @@ const schema = Yup.object().shape({
 
 
 export function Register() {
+  const { user } = useAuth();
   const [category, setCategory] = useState({
     key: "category",
     name: "Categoria",
@@ -65,7 +65,7 @@ export function Register() {
     resolver: yupResolver(schema)
   });
 
-  const dataKey = "@gofinances:transactions";
+  const dataKey = `@gofinances:transactions_user:${user.id}`;
 
   function handleTransactionsTypeSelect(type: "positive" | "negative") {
     setTransactionType(type);

@@ -23,6 +23,7 @@ import {
   Month,
   LoadingContainer,
 } from "./styles";
+import { useAuth } from "../../contexts/AuthContext";
 
 
 interface TransactionData {
@@ -44,6 +45,7 @@ interface CategoryData {
 
 
 export function Resume() {
+  const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [categoriesTotal, setCategoriesTotal] = useState<CategoryData[]>([]);
@@ -60,7 +62,7 @@ export function Resume() {
   async function loadData() {
     setIsLoading(true);
 
-    const dataKey = "@gofinances:transactions";
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
     const response = await AsyncStorage.getItem(dataKey);
     const transactions: TransactionData[] = response ? JSON.parse(response) : [] as TransactionData[];
 
