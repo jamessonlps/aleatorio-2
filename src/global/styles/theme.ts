@@ -1,9 +1,9 @@
 export default {
   colors: {
-    primary: "#5636d3",
+    primary: "#000280",
 
-    secondary: "#ff872c",
-    secondary_light: "rgba(255, 135, 44, 0.3)",
+    secondary: "#FA015F",
+    secondary_light: "rgba(255, 0, 101, 0.3)",
 
     success: "#12a454",
     success_light: "rgba(18, 164, 84, 0.3)",
